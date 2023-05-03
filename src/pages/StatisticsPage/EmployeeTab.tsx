@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, Text, Title as H } from "@mantine/core";
+import { Tabs, Text, Title as H, Table } from "@mantine/core";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
@@ -44,8 +44,8 @@ export default function EmployeeTab() {
     const ref = React.useRef(null);
     React.useEffect(() => {
         if (ref.current) {
-            (ref.current as any).canvas.style.width = "350px";
-            (ref.current as any).canvas.style.height = "350px";
+            (ref.current as any).canvas.style.width = "300px";
+            (ref.current as any).canvas.style.height = "300px";
         }
     }, [ref]);
     return (
@@ -67,6 +67,63 @@ export default function EmployeeTab() {
                 </Box>
             </Flex>
             <H order={2}>Chi tiết</H>
+            <Table striped highlightOnHover withBorder withColumnBorders>
+                <thead>
+                    <tr>
+                        <th>Mã nhân viên</th>
+                        <th>Tên nhân viên</th>
+                        <th>Tổng số hoá đơn</th>
+                        <th> Tổng tiền kiếm được</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ngô Hữu Hoàng</td>
+                        <td>10</td>
+                        <td>{faker.datatype.number({ min: 1000, max: 1000000 })}</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nguyễn A</td>
+                        <td>10</td>
+                        <td>{faker.datatype.number({ min: 1000, max: 1000000 })}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>LMTV</td>
+                        <td>10</td>
+                        <td>{faker.datatype.number({ min: 1000, max: 1000000 })}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Quốc tuấn</td>
+                        <td>10</td>
+                        <td>{faker.datatype.number({ min: 1000, max: 1000000 })}</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Nguyễn B</td>
+                        <td>10</td>
+                        <td>{faker.datatype.number({ min: 1000, max: 1000000 })}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td className="font-bold text-xl py-4" colSpan={2}>
+                            Tổng:
+                        </td>
+                        <td className="font-bold text-xl py-4">50 hoá đơn</td>
+                        <td className="font-bold text-xl py-4">
+                            {faker.datatype.number({
+                                min: 1000,
+                                max: 1000000,
+                            })}
+                            đ
+                        </td>
+                    </tr>
+                </tfoot>
+            </Table>
         </Tabs.Panel>
     );
 }
