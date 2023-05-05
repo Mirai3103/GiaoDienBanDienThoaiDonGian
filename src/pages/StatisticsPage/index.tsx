@@ -1,10 +1,7 @@
 import { Box, Flex, Image, Table, Tabs, TabsProps, Title, rem } from "@mantine/core";
 import { IconChartLine, IconCoin, IconDevices, IconMessageCircle, IconPhoto, IconSettings } from "@tabler/icons-react";
 import React from "react";
-import ConsumerImg from "../../assets/icons8-consumer-66.png";
-import EmployeeImg from "../../assets/icons8-employee-64.png";
-import ProductImg from "../../assets/icons8-phone-64.png";
-import ProviderImg from "../../assets/icons8-factory-50.png";
+
 import GeneralTab from "./GeneralTab";
 import ProductTab from "./ProductTab";
 import EmployeeTab from "./EmployeeTab";
@@ -70,8 +67,9 @@ function StyledTabs(props: TabsProps) {
 }
 
 export default function StatisticsPage() {
+    const [activeTab, setActiveTab] = React.useState<string | null>("general");
     return (
-        <StyledTabs m={"md"} defaultValue={"general"}>
+        <StyledTabs m={"md"} defaultValue={"general"} value={activeTab} onTabChange={setActiveTab}>
             <Tabs.List>
                 <Tabs.Tab value="general" icon={<IconChartLine size="1.5rem" />}>
                     Thống kê chung
@@ -83,9 +81,9 @@ export default function StatisticsPage() {
                     Nhân viên
                 </Tabs.Tab>
             </Tabs.List>
-            <GeneralTab />
-            <ProductTab />
-            <EmployeeTab />
+            {activeTab === "general" && <GeneralTab />}
+            {activeTab === "product" && <ProductTab />}
+            {activeTab === "employee" && <EmployeeTab />}
         </StyledTabs>
     );
 }

@@ -63,7 +63,7 @@ export default function EmployeeTab() {
                     </Group>
                 </Stack>
                 <Box className="shadow-lg border p-4">
-                    <Pie ref={ref} data={data} />
+                    <Pie id="aa" ref={ref} data={data} />
                 </Box>
             </Flex>
             <H order={2}>Chi tiết</H>

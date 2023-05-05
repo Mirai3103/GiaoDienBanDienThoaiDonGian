@@ -78,7 +78,7 @@ export default function GeneralTab() {
                 <GeneralCard title="Nhà cung cấp" value="40" Icon={ProductImg} color="yellow" />
             </Flex>
             <div className="flex justify-between">
-                <Line options={options} ref={chartRef} data={data} />
+                <Line id="bb" options={options} ref={chartRef} data={data} />
             </div>
             <Title order={2} my={"xs"} ml={"-20px"}>
                 Chi tiết:
